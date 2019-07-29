@@ -13,6 +13,14 @@ h2, h3, p {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.btn {
+    margin: 5px 0;
+}
+
+.btn:hover {
+    background-color: yellowgreen;
+}
+
 .container {
     width: 70%;
     height: 100%;
