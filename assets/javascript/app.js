@@ -28,49 +28,45 @@ var questions = [
    
 // when users presses a key, start game
 $(document).keypress(function() {
-// set playing to true
-if (!clockRunning) {
-clockRunning = true;
-// change title to 'let's play!'
-$("#title").text("Let's Play!");
-
-// nextQuestion() function:-------
-// nextQuestion();
-// change #question to show question1
-$("#question").text(questions[questionNumber].question);
-// questionNumber++;
-// set timer to 15 * 1000 -- setInterval for counting down, clearInterval if click
-timer = 15;
-var countdown = setInterval(function(){
-    $("#timer").text("Time Remaining: " + timer);
-    timer -= 1;
-    if(timer <= 0){
-      clearInterval(countdown);
-      $("#timer").text("Time's Up!");
-    }
-}, 1000); 
-// setTimeout() CHECK OUT 'stopwatch.js' for clues
-// show 3 incorrect answers and one correct answer - write these into the objects
-// how to dynamically generate buttons... in object, answers are in an array, one object key 'correctAnswer', is answers[i];
-// use for loop to generate buttons, and then .append them 
-for ( i = 0; i < 4; i++) {
-    $("#game").append("<p><button class='btn'>" + questions[questionNumber].answers[i] + "</button></p>");
-};
-}
+    nextQuestion();
 });
 
 // if timer = 0 borrow red background flash from simon game; setTimeout 3 * 1000 nextQuestion()
+
+function nextQuestion() {
+    if (!clockRunning) {
+        clockRunning = true;
+        // change title to 'let's play!'
+        $("#title").text("Question #" + (questionNumber + 1));
+        // change #question to show question1
+        $("#question").text(questions[questionNumber].question);
+        // set timer to 15 * 1000 -- setInterval for counting down, clearInterval if click
+        timer = 15;
+        var countdown = setInterval(function(){
+            $("#timer").text("Time Remaining: " + timer);
+            timer -= 1;
+            if(timer <= 0){
+                clearInterval(countdown);
+                $("#timer").text("Time's Up!");
+            }
+        }, 1000); 
+        // use for loop to dynamically generate 4 answer buttons, and then .append them 
+        for ( i = 0; i < 4; i++) {
+            $("#game").append("<p><button class='btn'>" + questions[questionNumber].answers[i] + "</button></p>");
+        };
+    }
+    
+}
+
+
 // CLICK EVENTS ---- checkAnswer()
+// how to do that? store clicked button's text as userAnswer, compare that to object.correctAnswer 
 // if user clicks incorrect answer button, show correct answer; setTimeout 3 * 1000 nextQuestion()
 // if user clicks correct answer button, show great work; setTimeout 3 * 1000 nextQuestion()
+// questionNumber++;
 // increment correct or incorrect
 // generate percentage? 
 
-
-
-
-
-// how to do that? store clicked button's text as userAnswer, compare that to object.correctAnswer 
 
 
 
