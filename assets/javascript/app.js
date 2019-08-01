@@ -58,24 +58,29 @@ function nextQuestion() {
 
 setTimeout(function() { // using a timeout to ensure the dom elements have loaded before click handler
 $("p").click(function() {
-    console.log(this.text);  // sometimes clicks are not registering
+    console.log(this.textContent);  // sometimes clicks are not registering?
     console.log(questions[questionNumber].correctAnswer) // having trouble matching a correct answer
-    var userChoice = this.text;
+    var userChoice = this.textContent;
     if ( userChoice === questions[questionNumber].correctAnswer ) { // use 'this' ?
         clockRunning = false;
-        console.log(userChoice);
-        
         correct++;
-        $("#title").text("Success");
+        $("#title").text("Success!");
+        $("#game").empty();
+        setTimeout(function() {    // LEFT OFF HERE
+        questionNumber++;
+        nextQuestion();
+        }, 2 * 1000);
 
     } else {
-        clockRunning = false;
-
-        incorrect++;
         $("#title").text("Incorrect!");
+        clockRunning = false;
+        incorrect++;
+        questionNumber++;
+        nextQuestion();
+
     }
 });
-}, 500)
+}, 800)
 
 // CLICK EVENTS ---- checkAnswer()
 // how to do that? store clicked button's text as userAnswer, compare that to object.correctAnswer 
