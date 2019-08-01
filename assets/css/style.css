@@ -18,6 +18,7 @@ h2, h3, p {
     width: 200px;
     height: 30px;
     font-weight: 400;
+
 }
 
 .btn:hover {
@@ -51,4 +52,5 @@ h2, h3, p {
 
 #game {
     margin: 40px;
+
 }
