@@ -83,7 +83,7 @@ $("p").click(function() {
 });
 }, 800)
 
-// CLICK EVENTS ---- checkAnswer()
+// result of userChoice ---- checkAnswer() or result() - shows result, then timeout 2 seconds wipes screen, nextQuestion
 // how to do that? store clicked button's text as userAnswer, compare that to object.correctAnswer 
 // if user clicks incorrect answer button, show correct answer; setTimeout 3 * 1000 nextQuestion()
 // if user clicks correct answer button, show great work; setTimeout 3 * 1000 nextQuestion()
