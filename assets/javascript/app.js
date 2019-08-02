@@ -43,8 +43,8 @@ function nextQuestion() {
         for ( i = 0; i < 4; i++) {
             $("#game").append("<p><button class='btn'>" + questions[questionNumber].answers[i] + "</button></p>");
         };
-        // set timer to 15 * 1000 -- setInterval for counting down, clearInterval if click
         timer = 15;
+        // set timer to 15 * 1000 -- setInterval for counting down, clearInterval if click
         var countdown = setInterval(function(){
             $("#timer").text("Time Remaining: " + timer);
             timer -= 1;
@@ -58,15 +58,15 @@ function nextQuestion() {
 
 setTimeout(function() { // using a timeout to ensure the dom elements have loaded before click handler
 $("p").click(function() {
-    console.log(this.textContent);  // sometimes clicks are not registering?
+    console.log(this.textContent);  // sometimes clicks are not registering - moved js link to body
     console.log(questions[questionNumber].correctAnswer) // having trouble matching a correct answer
     var userChoice = this.textContent;
     if ( userChoice === questions[questionNumber].correctAnswer ) { // use 'this' ?
+    $("#title").text("Success!");
         clockRunning = false;
         correct++;
-        $("#title").text("Success!");
         $("#game").empty();
-        setTimeout(function() {    // LEFT OFF HERE
+        setTimeout(function() {
         questionNumber++;
         nextQuestion();
         }, 2 * 1000);
@@ -75,6 +75,7 @@ $("p").click(function() {
         $("#title").text("Incorrect!");
         clockRunning = false;
         incorrect++;
+        $("#game").empty();
         questionNumber++;
         nextQuestion();
 
