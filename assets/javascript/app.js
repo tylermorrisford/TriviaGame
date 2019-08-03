@@ -6,6 +6,7 @@ var clockRunning = false;
 // var intervalId;
 var correct = 0;
 var incorrect = 0;
+let countdown;
 // questions as objects, then all objects in an array
 var questions = [
     {
@@ -56,29 +57,32 @@ function nextQuestion() {
     }
 };
 
-setTimeout(function() { // using a timeout to ensure the dom elements have loaded before click handler
-$("p").click(function() {
-    console.log(this.textContent);  // sometimes clicks are not registering - moved js link to body
-    console.log(questions[questionNumber].correctAnswer) // having trouble matching a correct answer
-    var userChoice = this.textContent;
-    if ( userChoice === questions[questionNumber].correctAnswer ) { // use 'this' ?
+setTimeout(function() { // !!!! a timeout to ensure the dom elements have loaded before click handler ????
+$("p .btn").on( "click", function() {
+    console.log( $( this ).text() );  //  there's an issue with event binding due to dynamically created buttons
+    console.log(questions[questionNumber].correctAnswer) // these are ready to delete once clicks are recorded
+    if ( this.textContent === questions[questionNumber].correctAnswer ) {
     $("#title").text("Success!");
         clockRunning = false;
+        clearInterval(countdown);  // appears that this does not work - second question timer decrements twice as fast
+        $("#question").text("Perfect! " + questions[questionNumber].correctAnswer + " is correct.");
         correct++;
         $("#game").empty();
         setTimeout(function() {
         questionNumber++;
         nextQuestion();
-        }, 2 * 1000);
-
-    } else {
+        }, 4 * 1000);
+    } else if ( this.textContent !== questions[questionNumber].correctAnswer ) {
         $("#title").text("Incorrect!");
         clockRunning = false;
+        clearInterval(countdown);
+        $("#question").text("The correct answer is " + questions[questionNumber].correctAnswer);
         incorrect++;
         $("#game").empty();
+        setTimeout(function() {
         questionNumber++;
         nextQuestion();
-
+        }, 4 * 1000);
     }
 });
 }, 800)
