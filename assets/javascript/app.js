@@ -52,19 +52,21 @@ function nextQuestion() {
             if (timer <= 0){
                 clearInterval(countdown);
                 $("#timer").text("Time's Up!");
+                $("#question").text("The correct answer is " + questions[questionNumber].correctAnswer);
+                $("#game").empty();
             }
         }, 1000); 
     }
 };
 
-setTimeout(function() { // !!!! a timeout to ensure the dom elements have loaded before click handler ????
-$("p .btn").on( "click", function() {
-    console.log( $( this ).text() );  //  there's an issue with event binding due to dynamically created buttons
+
+$("#game").on( "click", "p", function() {
+    console.log( $( this ).text() ); // delete this once game is working properly
     console.log(questions[questionNumber].correctAnswer) // these are ready to delete once clicks are recorded
     if ( this.textContent === questions[questionNumber].correctAnswer ) {
     $("#title").text("Success!");
         clockRunning = false;
-        clearInterval(countdown);  // appears that this does not work - second question timer decrements twice as fast
+        clearInterval(countdown);  // add boolean here? - second question timer decrements twice as fast
         $("#question").text("Perfect! " + questions[questionNumber].correctAnswer + " is correct.");
         correct++;
         $("#game").empty();
@@ -85,15 +87,16 @@ $("p .btn").on( "click", function() {
         }, 4 * 1000);
     }
 });
-}, 800)
+// }, 800)
 
 // result of userChoice ---- checkAnswer() or result() - shows result, then timeout 2 seconds wipes screen, nextQuestion
 // how to do that? store clicked button's text as userAnswer, compare that to object.correctAnswer 
 // if user clicks incorrect answer button, show correct answer; setTimeout 3 * 1000 nextQuestion()
 // if user clicks correct answer button, show great work; setTimeout 3 * 1000 nextQuestion()
-// questionNumber++;
-// increment correct or incorrect
-// generate percentage? 
+  
+// More functions possibly for thatsRight and thatsWrong
+// add more questions! 
+// add logic for the end of the game
 
 
 
