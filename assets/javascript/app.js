@@ -74,7 +74,7 @@ $("#game").on( "click", "p", function() {
         setTimeout(function() {
         questionNumber++;
         nextQuestion();
-        }, 4 * 1000);
+        }, 3 * 1000);
     } else if ( this.textContent !== questions[questionNumber].correctAnswer ) {
         $("#title").text("Incorrect!");
         clockRunning = false;
@@ -86,7 +86,7 @@ $("#game").on( "click", "p", function() {
         setTimeout(function() {
         questionNumber++;
         nextQuestion();
-        }, 4 * 1000);
+        }, 3 * 1000);
     }
 });
 // }, 800)
@@ -102,7 +102,6 @@ $("#game").on( "click", "p", function() {
 
 // function gameEnd() {
 //     $("#question").text("How'd you do?");
-
 // }
 
 // function restart() {
@@ -112,3 +111,23 @@ $("#game").on( "click", "p", function() {
 // }
 
 })
+
+
+// NEW QUESTIONS
+
+// Q 90% of the world's earthquakes occur where? A Circum Pacific Belt OTHERS: Alpide Belt, San Andreas Fault, Mariana Trench
+// Q Which of these is *not* a recognized type of drought? A Temporal Drought  Others: Meteorological drought, Hydrological drought, Agricultural drought     
+// Q What event was happening when the Loma Prieta earthquake occurred? A 1989 World Series OTHERS: Super Bowl XXIII, 1989 Stanley Cup Final, Apple release iPhone 1st gen     
+// Q A 1946 Aleution Islands earthquake triggered a tsunami that resulted in deaths in Alaska and where else? A Hawaii OTHERS Vancouver, BC, Seattle, WA, Hilo, HI    
+// Q From 2003 to 2005, swarms of desert locusts ravaged what region? A West Africa OTHERS Western China, Southwest United States, Middle East     
+// Q The most earthquake-prone state in the U.S. is:  A Alaska OTHERS: California, Washington, Utah    
+// Q Which of the following is true about the 2004 Indian Ocean Tsunami? A Many people in Indonesia reported that they saw animals fleeing for high ground minutes before the tsunami arrived – very few animal bodies were found afterward    OTHERS: make it up! earthquake force, etc
+ 
+ // add 'detail' to each object with a fact about the correct answer?
+ 
+ 
+ 
+ 
+ 
+ 
+ 
