@@ -21,7 +21,7 @@ var questions = [
     },
     {
     question: "What is the most common cause of a Tsunami?",
-    correctAnswer: "Underwater Earthquake",
+    correctAnswer: "Underwater earthquake",
     answers: ["Underwater volcano eruption", "An iceberg calving", "A meteorite striking the ocean", "Underwater earthquake"]
     }
 ];
@@ -46,7 +46,7 @@ function nextQuestion() {
         };
         timer = 15;
         // set timer to 15 * 1000 -- setInterval for counting down, clearInterval if click
-        var countdown = setInterval(function(){
+        countdown = setInterval(function(){
             $("#timer").text("Time Remaining: " + timer);
             timer -= 1;
             if (timer <= 0){
@@ -66,9 +66,10 @@ $("#game").on( "click", "p", function() {
     if ( this.textContent === questions[questionNumber].correctAnswer ) {
     $("#title").text("Success!");
         clockRunning = false;
-        clearInterval(countdown);  // add boolean here? - second question timer decrements twice as fast
+        clearInterval(countdown);  // add boolean here? - second question timer decrements twice as fast(check class activities)
         $("#question").text("Perfect! " + questions[questionNumber].correctAnswer + " is correct.");
         correct++;
+        $("#timer").empty();
         $("#game").empty();
         setTimeout(function() {
         questionNumber++;
@@ -80,6 +81,7 @@ $("#game").on( "click", "p", function() {
         clearInterval(countdown);
         $("#question").text("The correct answer is " + questions[questionNumber].correctAnswer);
         incorrect++;
+        $("#timer").empty();
         $("#game").empty();
         setTimeout(function() {
         questionNumber++;
@@ -94,11 +96,19 @@ $("#game").on( "click", "p", function() {
 // if user clicks incorrect answer button, show correct answer; setTimeout 3 * 1000 nextQuestion()
 // if user clicks correct answer button, show great work; setTimeout 3 * 1000 nextQuestion()
   
-// More functions possibly for thatsRight and thatsWrong
+// More functions possibly for thatsRight() and thatsWrong() and timeUp()
 // add more questions! 
 // add logic for the end of the game
 
+// function gameEnd() {
+//     $("#question").text("How'd you do?");
 
+// }
 
+// function restart() {
+//     clear all variables and divs 
+//     create restart button 
+//     click handler starts the game over
+// }
 
 })
