@@ -23,6 +23,41 @@ var questions = [
     question: "What is the most common cause of a Tsunami?",
     correctAnswer: "Underwater earthquake",
     answers: ["Underwater volcano eruption", "An iceberg calving", "A meteorite striking the ocean", "Underwater earthquake"]
+    },
+    {
+    question: "90% of the world's earthquakes occur where?",
+    correctAnswer: "Circum Pacific Belt",
+    answers: ["Alpide Belt", "San Andreas Fault", "Circum Pacific Belt", "Mariana Trench"]
+    },
+    {
+    question: "Which of the following is *not* a recognized type of drought?",
+    correctAnswer: "Temporal drought",
+    answers: ["Meteorological drought", "Temporal drought", "Hydrological drought", "Agricultural drought"]
+    },
+    {
+    question: "What event was happening when the Loma Prieta earthquake occurred?",
+    correctAnswer: "1989 World Series",
+    answers: ["1989 World Series", "Apple's release of 1st iPhone", "Super Bowl XXIII", "1989 Stanley Cup Final"]
+    },
+    {
+    question: "A 1946 Aleution Islands earthquake triggered a tsunami that resulted in deaths in Alaska and where else?",
+    correctAnswer: "Hilo, HI",
+    answers: ["Vancouver, BC", "San Francisco, CA", "Seattle, WA", "Hilo, HI"]
+    },
+    {
+    question: "From 2003 to 2005, swarms of desert locusts ravaged what region?",
+    correctAnswer: "West Africa",
+    answers: ["West Africa", "Western China", "Middle East", "Southwest United States"]
+    },
+    {
+    question: "The most earthquake-prone state in the U.S. is:",
+    correctAnswer: "Alaska",
+    answers: ["California", "Alaska", "Utah", "Washington"]
+    },
+    {
+    question: "Which of the following is true about the 2004 Indian Ocean Tsunami?",
+    correctAnswer: "People reported seeing animals fleeing for high ground minutes before the tsunami arrived",
+    answers: ["The rupture was more than 900 miles long", "Planes scrambled to takeoff before the tsunami arrives", "People reported seeing animals fleeing for high ground minutes before the tsunami arrived", "The tsunami resulted in at least 527,898 fatalities"]
     }
 ];
 
@@ -113,15 +148,6 @@ $("#game").on( "click", "p", function() {
 })
 
 
-// NEW QUESTIONS
-
-// Q 90% of the world's earthquakes occur where? A Circum Pacific Belt OTHERS: Alpide Belt, San Andreas Fault, Mariana Trench
-// Q Which of these is *not* a recognized type of drought? A Temporal Drought  Others: Meteorological drought, Hydrological drought, Agricultural drought     
-// Q What event was happening when the Loma Prieta earthquake occurred? A 1989 World Series OTHERS: Super Bowl XXIII, 1989 Stanley Cup Final, Apple release iPhone 1st gen     
-// Q A 1946 Aleution Islands earthquake triggered a tsunami that resulted in deaths in Alaska and where else? A Hawaii OTHERS Vancouver, BC, Seattle, WA, Hilo, HI    
-// Q From 2003 to 2005, swarms of desert locusts ravaged what region? A West Africa OTHERS Western China, Southwest United States, Middle East     
-// Q The most earthquake-prone state in the U.S. is:  A Alaska OTHERS: California, Washington, Utah    
-// Q Which of the following is true about the 2004 Indian Ocean Tsunami? A Many people in Indonesia reported that they saw animals fleeing for high ground minutes before the tsunami arrived – very few animal bodies were found afterward    OTHERS: make it up! earthquake force, etc
  
  // add 'detail' to each object with a fact about the correct answer?
  
