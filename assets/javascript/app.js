@@ -68,7 +68,6 @@ $(document).ready(function () {
 
     function nextQuestion() {
         if (questionNumber === 10) {
-            $("#title").text("How'd you do?");
             gameEnd();
         }
         if (!clockRunning) {
@@ -117,7 +116,7 @@ $(document).ready(function () {
             $("#title").text("Incorrect!");
             clockRunning = false;
             clearInterval(countdown);
-            $("#question").text("The correct answer is " + questions[questionNumber].correctAnswer);
+            $("#question").text("The correct answer is " + questions[questionNumber].correctAnswer + ".");
             incorrect++;
             $("#timer").text("* * *");
             $("#game").empty();
@@ -133,6 +132,11 @@ $(document).ready(function () {
         $("#question").text("You answered " + correct + " questions correctly, out of 10.");
         var percent = (correct / 10) * 100;
         $("#timer").text("Your percentage: " + percent + "%");
+        if ( percent >= 50 ) {
+            $("#game").html("<img src='assets/images/thumbs-up.png' style='color:green' class='green'><br>")
+        } else {
+            $("#game").html("<img src='assets/images/thumbs-down.png' class='red'><br>")
+        };
         $("#game").append("<button class='btn'>click to restart</button>");
         $("#game").on("click", "button", function () {
             restart();
@@ -140,14 +144,17 @@ $(document).ready(function () {
     }
 
     function restart() {
-        $("#title").empty();
-        $("#question").empty();
-        $("#timer").empty();
+        $("#title").text("Disaster Trivia");
+        $("#question").text("Answer as many questions as you can in the alloted time!");
+        $("#timer").text("Press any key to begin...");
         $("#game").empty();
+        timer = 0;
         questionNumber = 0;
         correct = 0;
         incorrect = 0;
-        nextQuestion(); // Seems like the logic breaks on the second iteration of the game
+        $(document).keypress(function () {
+            nextQuestion();
+        });
     }
 
     function questionAdvance() {

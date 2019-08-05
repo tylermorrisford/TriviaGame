@@ -45,6 +45,14 @@ hr {
     opacity: 0.8;
   }
 
+.green {
+    color: greenyellow;
+}  
+
+.red {
+    color: red;
+}
+
 #question {
     font-weight: 700;
     margin-top: 80px;
