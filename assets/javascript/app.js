@@ -96,10 +96,7 @@ $(document).ready(function () {
                     $("#timer").text("Time's Up!");
                     $("#question").text("The correct answer is " + questions[questionNumber].correctAnswer);
                     $("#game").empty();
-                    setTimeout(function () {
-                        questionNumber++;
-                        nextQuestion();
-                    }, 3 * 1000);
+                    questionAdvance();
                 }
             }, 1000);
         }
@@ -115,15 +112,7 @@ $(document).ready(function () {
             correct++;
             $("#timer").text("* * *");
             $("#game").empty();
-            setTimeout(function () {
-                questionNumber++;
-                if (questionNumber === 10) {
-                    $("#title").text("How'd you do?");
-                    gameEnd();
-                } else {
-                    nextQuestion();
-                }
-            }, 3 * 1000);
+            questionAdvance();
         } else if (this.textContent !== questions[questionNumber].correctAnswer) {
             $("#title").text("Incorrect!");
             clockRunning = false;
@@ -132,15 +121,7 @@ $(document).ready(function () {
             incorrect++;
             $("#timer").text("* * *");
             $("#game").empty();
-            setTimeout(function () {
-                questionNumber++;
-                if (questionNumber === 10) {
-                    $("#title").text("How'd you do?");
-                    gameEnd();
-                } else {
-                    nextQuestion();
-                }
-            }, 3 * 1000);
+            questionAdvance();
         }
     });
 
@@ -167,6 +148,18 @@ $(document).ready(function () {
         correct = 0;
         incorrect = 0;
         nextQuestion();
+    }
+
+    function questionAdvance() {
+        setTimeout(function () {
+            questionNumber++;
+            if (questionNumber === 10) {
+                $("#title").text("How'd you do?");
+                gameEnd();
+            } else {
+                nextQuestion();
+            }
+        }, 3 * 1000);
     }
 
 })
