@@ -1,2 +1,2 @@
-# TriviaGame
-a timed trivia game using timed events
+# Disaster Trivia
+An incredibly difficult trivia game using jQuery and timed events!
