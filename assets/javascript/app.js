@@ -3,7 +3,6 @@ $(document).ready(function() {
 var timer = 0;
 var questionNumber = 0; 
 var clockRunning = false;
-// var intervalId;
 var correct = 0;
 var incorrect = 0;
 let countdown;
@@ -66,29 +65,42 @@ $(document).keypress(function() {
     nextQuestion();
 });
 
-// if timer = 0 borrow red background flash from simon game; setTimeout 3 * 1000 nextQuestion()
+// if timer = 0 borrow red background flash from simon game
 
 function nextQuestion() {
+    if (questionNumber === 10) {
+        $("#title").text("How'd you do?");
+        gameEnd();
+    }
     if (!clockRunning) {
         clockRunning = true;
-        // change title to 'let's play!'
+        // change title to show current question number
         $("#title").text("Question #" + (questionNumber + 1));
         // change #question to show question1
         $("#question").text(questions[questionNumber].question);
         // use for loop to dynamically generate 4 answer buttons, and then .append them 
+        $("#timer").text("Time Remaining: ");
         for ( i = 0; i < 4; i++) {
             $("#game").append("<p><button class='btn'>" + questions[questionNumber].answers[i] + "</button></p>");
         };
         timer = 15;
-        // set timer to 15 * 1000 -- setInterval for counting down, clearInterval if click
         countdown = setInterval(function(){
             $("#timer").text("Time Remaining: " + timer);
             timer -= 1;
-            if (timer <= 0){
+            if (timer === 0){        // steal red background effect from simon game
+                $('body').addClass("time-up");
+                setTimeout(function() {
+                $('body').removeClass("time-up");
+                }, 200);
+                clockRunning = false;
                 clearInterval(countdown);
                 $("#timer").text("Time's Up!");
                 $("#question").text("The correct answer is " + questions[questionNumber].correctAnswer);
                 $("#game").empty();
+                setTimeout(function() {
+                    questionNumber++;
+                    nextQuestion();
+                    }, 3 * 1000);
             }
         }, 1000); 
     }
@@ -96,19 +108,22 @@ function nextQuestion() {
 
 
 $("#game").on( "click", "p", function() {
-    console.log( $( this ).text() ); // delete this once game is working properly
-    console.log(questions[questionNumber].correctAnswer) // these are ready to delete once clicks are recorded
     if ( this.textContent === questions[questionNumber].correctAnswer ) {
     $("#title").text("Success!");
         clockRunning = false;
-        clearInterval(countdown);  // add boolean here? - second question timer decrements twice as fast(check class activities)
-        $("#question").text("Perfect! " + questions[questionNumber].correctAnswer + " is correct.");
+        clearInterval(countdown); 
+        $("#question").text(questions[questionNumber].correctAnswer + " is correct.");
         correct++;
-        $("#timer").empty();
+        $("#timer").text("* * *");
         $("#game").empty();
         setTimeout(function() {
         questionNumber++;
-        nextQuestion();
+        if (questionNumber === 10) {
+            $("#title").text("How'd you do?");
+            gameEnd();
+        } else {
+            nextQuestion();
+        }
         }, 3 * 1000);
     } else if ( this.textContent !== questions[questionNumber].correctAnswer ) {
         $("#title").text("Incorrect!");
@@ -116,40 +131,50 @@ $("#game").on( "click", "p", function() {
         clearInterval(countdown);
         $("#question").text("The correct answer is " + questions[questionNumber].correctAnswer);
         incorrect++;
-        $("#timer").empty();
+        $("#timer").text("* * *");
         $("#game").empty();
         setTimeout(function() {
         questionNumber++;
-        nextQuestion();
+        if (questionNumber === 10) {
+            $("#title").text("How'd you do?");
+            gameEnd();
+        } else {
+            nextQuestion();
+        }
         }, 3 * 1000);
     }
 });
-// }, 800)
-
-// result of userChoice ---- checkAnswer() or result() - shows result, then timeout 2 seconds wipes screen, nextQuestion
-// how to do that? store clicked button's text as userAnswer, compare that to object.correctAnswer 
-// if user clicks incorrect answer button, show correct answer; setTimeout 3 * 1000 nextQuestion()
-// if user clicks correct answer button, show great work; setTimeout 3 * 1000 nextQuestion()
   
-// More functions possibly for thatsRight() and thatsWrong() and timeUp()
-// add more questions! 
-// add logic for the end of the game
 
-// function gameEnd() {
-//     $("#question").text("How'd you do?");
-// }
+function gameEnd() {
+    clockRunning = false;
+    clearInterval(countdown);
+    $("#title").text("How'd you do?");
+    $("#question").text("You answered " + correct + " questions correctly, out of 10.");
+    var percent = (correct / 10) * 100;
+    $("#timer").text("Your percentage: " + percent + "%");
+    $("#game").append("<button class='btn'>click to restart</button>");
+    $("#game").on( "click", "button", function() {
+        restart();
+    })
+}
 
-// function restart() {
-//     clear all variables and divs 
-//     create restart button 
-//     click handler starts the game over
-// }
+function restart() {
+    $("#title").empty();
+    $("#question").empty();
+    $("#timer").empty();
+    $("#game").empty();
+    questionNumber = 0; 
+    correct = 0;
+    incorrect = 0;
+    nextQuestion();
+}
+
 
 })
 
 
  
- // add 'detail' to each object with a fact about the correct answer?
  
  
  

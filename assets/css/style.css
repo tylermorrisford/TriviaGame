@@ -13,10 +13,14 @@ h2, h3, p {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+hr {
+    width: 60%;
+}
+
 .btn {
     margin: 5px 0;
     width: 225px;
-    height: 35px;
+    height: 40px;
     font-weight: 400;
 
 }
@@ -29,14 +33,17 @@ h2, h3, p {
     width: 70%;
     height: 100%;
     margin: 0 auto 0;
-    background-color: whitesmoke;
-    opacity: 0.8;
     padding: 50px 10px 30px;
 }
 
 .header {
     margin-bottom: 5px;
 }
+
+.time-up {
+    background-color: red;
+    opacity: 0.8;
+  }
 
 #question {
     font-weight: 700;
