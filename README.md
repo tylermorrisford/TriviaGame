@@ -19,5 +19,5 @@ A .on("click" function binds to the dynamically created buttons and compares the
 This game is very simple and thus pretty straightforward. Press any key to start the game, and then you're on the clock - you've got fifteen seconds to answer each question. The questions are... difficult; unless you're a seismologist. Play the game at https://tylermorrisford.github.io/TriviaGame/
 
 # 3 User Feedback
-To date, three external users have played the game and each got only two of the ten questions correctly. 
+To date, five external users have played the game; three of them got only two of the ten questions correctly, one user got three correct, and one user got 7 correct!
 
