@@ -147,7 +147,7 @@ $(document).ready(function () {
         questionNumber = 0;
         correct = 0;
         incorrect = 0;
-        nextQuestion();
+        nextQuestion(); // Seems like the logic breaks on the second iteration of the game
     }
 
     function questionAdvance() {
