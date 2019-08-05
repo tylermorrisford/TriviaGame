@@ -2,9 +2,9 @@
 An incredibly difficult trivia game using jQuery and timed events!
 
 ## Index
-1.How it works
-2.Game Instructions
-3.User Feedback
+1. How it works
+2. Game Instructions
+3. User Feedback
 
 # 1 How it works
 When the page finishes loading, several variables are created, along with game questions. These questions are constructed as objects in an array, and the answers are an array of strings. The pink elephant study group affectionately refers to this construction as the 'array turducken'. It's only important to note because the nested construction makes accessing the data very easy. 
