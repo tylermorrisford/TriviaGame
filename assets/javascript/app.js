@@ -55,8 +55,8 @@ $(document).ready(function () {
         },
         {
             question: "Which of the following is true about the 2004 Indian Ocean Tsunami?",
-            correctAnswer: "Animals were seen fleeing for high ground minutes before the tsunami arrived",
-            answers: ["The rupture was more than 900 miles long", "Planes scrambled to takeoff before the tsunami arrives", "Animals were seen fleeing for high ground minutes before the tsunami arrived", "The tsunami resulted in at least 527,898 fatalities"]
+            correctAnswer: "Animals were seen fleeing for high ground before the tsunami arrived",
+            answers: ["The rupture was more than 900 miles long", "Planes scrambled to takeoff before the tsunami arrives", "Animals were seen fleeing for high ground before the tsunami arrived", "The tsunami resulted in at least 527,898 fatalities"]
         }
     ];
 
