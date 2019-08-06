@@ -138,7 +138,7 @@ $(document).ready(function () {
             $("#game").html("<img src='assets/images/thumbs-down.png' class='red'><br>")
         };
         $("#game").append("<button id='restart' class='btn'>click to restart</button>");
-        $("#game").on("click", "#restart", function () {
+        $("#game").on("click", "#restart", function () { // turn this handler off 
             questionNumber = 0;
             timer = 0;
             correct = 0;
@@ -153,7 +153,7 @@ $(document).ready(function () {
         $("#question").empty();
         $("#timer").empty();
         $("#game").empty();
-        nextQuestion();
+        nextQuestion(); // handler off here?
     }
 
     function questionAdvance() {
