@@ -101,7 +101,7 @@ $(document).ready(function () {
         }
     };
 
-
+    // click events control scoring and update html content
     $("#game").on("click", "p", function () {
         if (this.textContent === questions[questionNumber].correctAnswer) {
             $("#title").text("Success!");
@@ -133,17 +133,16 @@ $(document).ready(function () {
         var percent = (correct / 10) * 100;
         $("#timer").text("Your percentage: " + percent + "%");
         if ( percent >= 50 ) {
-            $("#game").html("<img src='assets/images/thumbs-up.png' style='color:green' class='green'><br>")
+            $("#game").html("<p><img class='img' src='assets/images/thumbs-up.png'</p><br>")
         } else {
-            $("#game").html("<img src='assets/images/thumbs-down.png' class='red'><br>")
+            $("#game").html("<p><img class='img' src='assets/images/thumbs-down.png'</p><br>")
         };
         $("#game").append("<button id='restart' class='btn'>click to restart</button>");
-        $("#game").on("click", "#restart", function () { // turn this handler off 
+        $("#game").on("click", "#restart", function () { 
             questionNumber = 0;
             timer = 0;
             correct = 0;
             incorrect = 0;
-            console.log("variables wiped")
             restart();
         })
     }
@@ -153,13 +152,13 @@ $(document).ready(function () {
         $("#question").empty();
         $("#timer").empty();
         $("#game").empty();
-        nextQuestion(); // handler off here?
+        $("#game").off("click", "#restart");
+        nextQuestion(); 
     }
 
     function questionAdvance() {
         setTimeout(function () {
             questionNumber++;
-            console.log("question has incremented successfully");
             if (questionNumber === 10) {
                 $("#title").text("How'd you do?");
                 gameEnd();

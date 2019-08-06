@@ -53,6 +53,12 @@ hr {
     color: red;
 }
 
+.img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 35px;
+}
+
 #question {
     font-weight: 700;
     margin-top: 80px;
