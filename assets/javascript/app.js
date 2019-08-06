@@ -104,22 +104,22 @@ $(document).ready(function () {
     // click events control scoring and update html content
     $("#game").on("click", "p", function () {
         if (this.textContent === questions[questionNumber].correctAnswer) {
-            $("#title").text("Success!");
-            clockRunning = false;
-            clearInterval(countdown);
+            $("#title").text("Success!").addClass("green");
             $("#question").text(questions[questionNumber].correctAnswer + " is correct.");
+            setTimeout(function () {
+                $('#title').removeClass("green");
+                }, 3000);
+            clean();
             correct++;
-            $("#timer").text("* * *");
-            $("#game").empty();
             questionAdvance();
         } else if (this.textContent !== questions[questionNumber].correctAnswer) {
             $("#title").text("Incorrect!");
-            clockRunning = false;
-            clearInterval(countdown);
-            $("#question").text("The correct answer is " + questions[questionNumber].correctAnswer + ".");
+            $("#question").text("The correct answer is " + questions[questionNumber].correctAnswer + ".").addClass("red");
+            setTimeout(function () {
+                $('#question').removeClass("red");
+                }, 2900);
+            clean();
             incorrect++;
-            $("#timer").text("* * *");
-            $("#game").empty();
             questionAdvance();
         }
     });
@@ -168,4 +168,10 @@ $(document).ready(function () {
         }, 3 * 1000);
     }
 
+    function clean() {
+        clockRunning = false;
+        clearInterval(countdown);
+        $("#timer").text("* * *");
+        $("#game").empty();
+    }
 })

@@ -26,7 +26,8 @@ hr {
 }
 
 .btn:hover {
-    background-color: rgb(249, 252, 81);
+    background-color: #069CCC;
+    color: white;
 }
 
 .container {
@@ -41,16 +42,16 @@ hr {
 }
 
 .time-up {
-    background-color: red;
+    background-color: #FF3225;
     opacity: 0.8;
   }
 
 .green {
-    color: green;
+    color: #21FFBB;
 }  
 
 .red {
-    color: red;
+    color: #FF3225;
 }
 
 .img {
