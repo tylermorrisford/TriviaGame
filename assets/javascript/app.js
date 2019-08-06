@@ -137,29 +137,29 @@ $(document).ready(function () {
         } else {
             $("#game").html("<img src='assets/images/thumbs-down.png' class='red'><br>")
         };
-        $("#game").append("<button class='btn'>click to restart</button>");
-        $("#game").on("click", "button", function () {
+        $("#game").append("<button id='restart' class='btn'>click to restart</button>");
+        $("#game").on("click", "#restart", function () {
+            questionNumber = 0;
+            timer = 0;
+            correct = 0;
+            incorrect = 0;
+            console.log("variables wiped")
             restart();
         })
     }
 
     function restart() {
-        $("#title").text("Disaster Trivia");
-        $("#question").text("Answer as many questions as you can in the alloted time!");
-        $("#timer").text("Press any key to begin...");
+        $("#title").empty();
+        $("#question").empty();
+        $("#timer").empty();
         $("#game").empty();
-        timer = 0;
-        questionNumber = 0;
-        correct = 0;
-        incorrect = 0;
-        $(document).keypress(function () {
-            nextQuestion();
-        });
+        nextQuestion();
     }
 
     function questionAdvance() {
         setTimeout(function () {
             questionNumber++;
+            console.log("question has incremented successfully");
             if (questionNumber === 10) {
                 $("#title").text("How'd you do?");
                 gameEnd();
